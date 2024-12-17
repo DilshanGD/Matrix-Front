@@ -52,7 +52,7 @@ const AdminSignIn = ({ onClose }) => {
     <div className="signin-popup-overlay">
       <div className="signin-popup">
         <button className="close-btn" onClick={onClose}>&times;</button>
-        <h2 className="signin-title">Staff Login</h2>
+        <h2 className="signin-title">Admin Login</h2>
         <form onSubmit={handleLogin} className="signin-form">
           <div className="form-group">
             <label htmlFor="email">Email</label>

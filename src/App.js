@@ -7,6 +7,7 @@ import StudentRegistration from './pages/student/StudentRegistration';
 import AddBlog from './pages/staff/AddBlog'; 
 import StrictPage from './pages/common/StrictPage';
 import Student from './pages/student/Student';
+import Staff from './pages/staff/Staff';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/student-registration" element={<StudentRegistration />} />
         <Route path="/staff/add-blog" element={<AddBlog />} />
         <Route path="/student/*" element={<Student />} />
+        <Route path="/staff/*" element={<Staff />} />
       </Routes>
     </Router>
   );

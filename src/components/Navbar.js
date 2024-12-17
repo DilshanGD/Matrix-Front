@@ -3,7 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import StudentSignIn from '../pages/student/StudentSignIn'; // Import the StudentSignIn component
+import StudentSignIn from '../pages/student/StudentSignIn';
+import StaffSignIn from '../pages/staff/StaffSignIn';
+import AdminSignIn from '../pages/admin/AdminSignIn';
 import './css/Navbar.css';
 import config from '../config';
 
@@ -11,20 +13,21 @@ const Navbar = () => {
   const [logo, setLogo] = useState(null);
   const [error, setError] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [showStudentSignIn, setShowStudentSignIn] = useState(false);
+  const [activePopup, setActivePopup] = useState(''); // Tracks the active popup
 
   useEffect(() => {
-    axios.get(`${config.apiUrl}/navbar`)
-      .then(response => {
-        const logoDetail = response.data.find(detail => detail.detail_id === 'logo_nav');
+    axios
+      .get(`${config.apiUrl}/navbar`)
+      .then((response) => {
+        const logoDetail = response.data.find((detail) => detail.detail_id === 'logo_nav');
         if (logoDetail) {
           setLogo(logoDetail.file_path);
         } else {
           setError(true);
         }
       })
-      .catch(error => {
-        console.error("Error fetching navbar details:", error);
+      .catch((error) => {
+        console.error('Error fetching navbar details:', error);
         setError(true);
       });
   }, []);
@@ -34,10 +37,10 @@ const Navbar = () => {
     setShowDropdown(!showDropdown);
   };
 
-  // Function to close the student sign-in popup
-  const handleStudentSignInClose = () => {
-    setShowStudentSignIn(false);
-    setShowDropdown(false);
+  // Function to handle popup toggle
+  const handlePopupToggle = (popup) => {
+    setActivePopup((current) => (current === popup ? '' : popup));
+    setShowDropdown(false); // Close the dropdown when a popup is opened
   };
 
   return (
@@ -67,21 +70,30 @@ const Navbar = () => {
             className="sign-in-button"
             onClick={handleDropdownToggle}
             aria-haspopup="true"
-            aria-expanded={showDropdown ? "true" : "false"}
+            aria-expanded={showDropdown ? 'true' : 'false'}
           >
             Sign In
           </button>
           {showDropdown && (
             <div className="dropdown-menu">
-              <button onClick={() => setShowStudentSignIn(true)}>Student Sign-In</button>
-              <Link to="/teacher-login" className="dropdown-link">Teacher Sign-In</Link>
-              <Link to="/admin-login" className="dropdown-link">Admin Sign-In</Link>
+              <button onClick={() => handlePopupToggle('student')} className="dropdown-link">
+                Student Sign-In
+              </button>
+              <button onClick={() => handlePopupToggle('staff')} className="dropdown-link">
+                Staff Sign-In
+              </button>
+              <button onClick={() => handlePopupToggle('admin')} className="dropdown-link">
+                Admin Sign-In
+              </button>
             </div>
           )}
         </div>
       </div>
 
-      {showStudentSignIn && <StudentSignIn onClose={handleStudentSignInClose} />}
+      {/* Render popups based on activePopup */}
+      {activePopup === 'student' && <StudentSignIn onClose={() => setActivePopup('')} />}
+      {activePopup === 'staff' && <StaffSignIn onClose={() => setActivePopup('')} />}
+      {activePopup === 'admin' && <AdminSignIn onClose={() => setActivePopup('')} />}
     </nav>
   );
 };

@@ -8,6 +8,7 @@ import TipsPage from './TipsPage';
 import BlogPage from './BlogPage';
 import Library from './Library';
 import SubjectBooks from './SubjectBooks';
+import Timetable from './Timetable';
 
 const StrictPage = () => {
   return (
@@ -19,6 +20,7 @@ const StrictPage = () => {
           <Route path="tips" element={<TipsPage />} />
           <Route path="blogs" element={<BlogPage />} />
           <Route path="library" element={<Library />} />
+          <Route path="timetable" element={<Timetable />} />
           <Route path="/library/subject/:subtitle" element={<SubjectBooks />} />
         </Routes>
       </div>
