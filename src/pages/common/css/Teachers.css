@@ -1,0 +1,107 @@
+/* Teachers.css */
+.teachers-container {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  min-height: 100vh;
+}
+
+.teachers-content {
+  padding: 20px;
+  margin-top: 60px; /* Adjusted for the navbar */
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.stream-group {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.stream-group h2 {
+  color: #2d87f0;
+  font-size: 1.8em;
+}
+
+.subject-group {
+  margin-left: 20px;
+}
+
+.subject-group h3 {
+  color: #f44336;
+  font-size: 1.5em;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+.loading-spinner, .error-message {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.loading-spinner p, .error-message p {
+  font-size: 1.5em;
+  color: #555;
+}
+
+.error-message button {
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 4px;
+}
+
+.error-message button:hover {
+  background-color: #d32f2f;
+}
+
+.navbar {
+  background-color: #333;
+  padding: 20px;
+  color: white;
+}
+
+.navbar .logo {
+  width: 150px;
+}
+
+.navbar .nav-links {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .nav-links li {
+  color: white;
+  cursor: pointer;
+}
+
+.navbar .sign-in {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.navbar .sign-in:hover {
+  background-color: #45a049;
+}

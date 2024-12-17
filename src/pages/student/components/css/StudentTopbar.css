@@ -1,0 +1,52 @@
+.student-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-logo {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .nav-logo-img {
+    max-height: 50px;
+  }
+  
+  .student-info {
+    flex: 2;
+    text-align: center;
+  }
+  
+  .student-full-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .student-reg-no {
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .profile-pic {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .profile-pic-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .error-message, .loading-message {
+    text-align: center;
+    margin-top: 20px;
+  }
+  

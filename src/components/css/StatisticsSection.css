@@ -1,0 +1,32 @@
+/* StatisticsSection.css */
+
+.statistics {
+    display: flex;
+    justify-content: space-around;
+    padding: 1.5rem;
+    background-color: #e8f1ff;
+    margin-top: 2rem;
+    border-radius: 8px;
+  }
+  
+  .stat-item {
+    text-align: center;
+    color: #333;
+  }
+  
+  .stat-item i {
+    font-size: 2.5rem;
+    color: #3b82f6;
+  }
+  
+  .stat-item p {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+  }
+  
+  .stat-item h3 {
+    font-size: 1.5rem;
+    color: #555;
+  }
+  
