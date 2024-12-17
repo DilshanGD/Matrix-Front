@@ -1,65 +1,66 @@
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import config from '../../config';
+import './css/AddBlog.css';
 
-const BlogForm = () => {
+const AddBlog = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState('');
-  const [username, setUsername] = useState('');  // New state for username
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Construct the request payload
     const blogData = {
       title,
-      content,  // Content will be HTML formatted text from React Quill
       image,
-      username,  // Added username to the blog data
+      content,
     };
 
     try {
-      // Send the blog data to the backend API using Axios
+      // Send the POST request to the API
       const response = await axios.post(`${config.apiUrl}/staff/add-blogs`, blogData, {
         headers: {
           'Content-Type': 'application/json',
         },
+        withCredentials: true, // Ensures cookies/session data are sent for authentication
       });
 
-      // Handle the response
+      // Handle success
       if (response.status === 201) {
         alert('Blog created successfully');
-        // Optionally reset the form here
+        // Reset the form and navigate back to the Add New page
         setTitle('');
         setContent('');
         setImage('');
-        setUsername('');  // Reset username
+        navigate('/staff/add-new');
       }
     } catch (error) {
-      // Handle errors (e.g., validation issues, network errors)
+      // Handle errors (e.g., validation or server errors)
       console.error('Error:', error.response || error);
-      setError(error.response ? error.response.data.error : 'Failed to create blog');
+      setError(
+        error.response && error.response.data.errors
+          ? error.response.data.errors.map((err) => err.msg).join(', ')
+          : 'Failed to create the blog. Please try again.'
+      );
     }
   };
 
+  const handleCancel = () => {
+    navigate('/staff/add-new'); // Navigate back to Add New page
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
+    <form onSubmit={handleSubmit} className="blog-form">
+      {error && <div className="error-message">{error}</div>}
 
-      <div>
-        <label>Username:</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </div>
-
-      <div>
+      <div className="form-group">
         <label>Title:</label>
         <input
           type="text"
@@ -69,7 +70,7 @@ const BlogForm = () => {
         />
       </div>
 
-      <div>
+      <div className="form-group">
         <label>Content:</label>
         <ReactQuill
           value={content}
@@ -79,7 +80,7 @@ const BlogForm = () => {
         />
       </div>
 
-      <div>
+      <div className="form-group">
         <label>Image URL:</label>
         <input
           type="text"
@@ -88,9 +89,14 @@ const BlogForm = () => {
         />
       </div>
 
-      <button type="submit">Publish Blog</button>
+      <div className="button-group">
+        <button type="submit" className="submit-button">Publish Blog</button>
+        <button type="button" className="cancel-button" onClick={handleCancel}>
+          Cancel
+        </button>
+      </div>
     </form>
   );
 };
 
-export default BlogForm;
+export default AddBlog;

@@ -1,3 +1,5 @@
+// frontend/src/pages/staff/Classes.js
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import config from '../../config'; // Ensure this contains your API base URL
