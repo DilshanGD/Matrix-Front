@@ -30,16 +30,16 @@ const StaffSidebar = () => {
             <Link to="/staff" className="sidebar-link">Dashboard</Link>
           </li>
           <li>
-            <Link to="/classes" className="sidebar-link">Classes</Link>
+            <Link to="/staff/classes" className="sidebar-link">Classes</Link>
           </li>
           <li>
-            <Link to="/add-new" className="sidebar-link">Add New</Link>
+            <Link to="/staff/add-new" className="sidebar-link">Add New</Link>
           </li>
           <li>
             <Link to="/staff/StaffProfile" className="sidebar-link">My Profile</Link>
           </li>
           <li>
-            <Link to="/payments" className="sidebar-link">Payments</Link>
+            <Link to="/staff/payments" className="sidebar-link">Payments</Link>
           </li>
           <li>
             <button

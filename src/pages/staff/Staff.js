@@ -6,7 +6,8 @@ import StaffTopbar from './components/StaffTopbar';
 import StaffSidebar from './components/StaffSidebar';
 //import StaffProfile from './StaffProfile';
 import './css/Staff.css'; // Import the CSS file for styling
-//import StaffDashboard from './StaffDashboard';
+import StaffDashboard from './StaffDashboard';
+import Classes from './Classes';
 
 const Staff = () => {
   return (
@@ -16,7 +17,8 @@ const Staff = () => {
         <StaffSidebar />
         <div className="page-content">
           <Routes>
-            {/* <Route path="/StaffDashboard" element={<StaffDashboard />} /> */}
+            <Route path="/" element={<StaffDashboard />} />
+            <Route path="/classes" element={<Classes />} />
             {/* <Route path="/StudentProfile" element={<StudentProfile />} /> */}
             {/* Add your routes here */}
           </Routes>

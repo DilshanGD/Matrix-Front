@@ -118,7 +118,7 @@ const StudentProfile = () => {
     }
 
     try {
-      const response = await axios.patch(`${config.apiUrl}/student/new-password`, { pwd: newPassword }, {
+      await axios.patch(`${config.apiUrl}/student/new-password`, { pwd: newPassword }, {
         withCredentials: true,
         headers: { 'Content-Type': 'application/json' },
       });
