@@ -8,6 +8,7 @@ import AddBlog from './pages/staff/AddBlog';
 import StrictPage from './pages/common/StrictPage';
 import Student from './pages/student/Student';
 import Staff from './pages/staff/Staff';
+import Admin from './pages/admin/Admin';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/staff/add-blog" element={<AddBlog />} />
         <Route path="/student/*" element={<Student />} />
         <Route path="/staff/*" element={<Staff />} />
+        <Route path="/admin/*" element={<Admin />} />
       </Routes>
     </Router>
   );

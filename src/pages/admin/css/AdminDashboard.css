@@ -1,0 +1,50 @@
+.staff-dashboard {
+    padding: 20px;
+  }
+  
+  .dashboard-title {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .current-datetime {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .current-datetime .date {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .current-datetime .time {
+    font-size: 1.2rem;
+    color: #777;
+  }
+  
+  .timetable-container {
+    margin: 0 auto;
+    max-width: 800px;
+    overflow-x: auto;
+  }
+  
+  .timetable-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .timetable-table th,
+  .timetable-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .timetable-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  

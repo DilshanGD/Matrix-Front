@@ -1,0 +1,48 @@
+.Admin-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+    z-index: 2;
+  }
+  
+  .nav-logo {
+    flex: 1;
+  }
+  
+  .nav-logo-img {
+    width: 100px;
+    height: auto;
+  }
+  
+  .Admin-info {
+    flex: 2;
+    text-align: center;
+  }
+  
+  .Admin-full-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .Admin-username {
+    font-size: 1em;
+    color: #666;
+    margin: 0;
+  }
+  
+  .profile-pic {
+    flex: 1;
+    text-align: right;
+  }
+  
+  .profile-pic-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
