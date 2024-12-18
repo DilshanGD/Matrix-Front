@@ -1,15 +1,13 @@
-// frontend/src/pages/common/SubjectBooks.js
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import { useParams, useSearchParams } from 'react-router-dom'; // Import useSearchParams to access query parameters
+import { useParams, useSearchParams } from 'react-router-dom';
 import './css/Library.css';
 import config from '../../config';
 
 const SubjectBooks = () => {
-  const { subtitle } = useParams(); // Get subtitle from URL params (e.g., "Information Technology")
-  const [searchParams] = useSearchParams(); // Access query parameters
-  const sub_id = searchParams.get('sub_id'); // Get sub_id from the query parameters
+  const { subtitle } = useParams();
+  const [searchParams] = useSearchParams();
+  const sub_id = searchParams.get('sub_id');
 
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,14 +16,13 @@ const SubjectBooks = () => {
   const [totalPages, setTotalPages] = useState(1);
   const limit = 8;
 
-  // Fetch all books for the subject using subtitle and sub_id
-  const fetchBooksForSubject = async (page = 1) => {
+  const fetchBooksForSubject = useCallback(async (page = 1) => {
     setLoading(true);
     setError(null);
 
     try {
       const response = await axios.get(`${config.apiUrl}/library/subject/${subtitle}`, {
-        params: { sub_id, page, limit } // Pass sub_id, page, and limit as query params
+        params: { sub_id, page, limit },
       });
       setBooks(response.data.books);
       setTotalPages(response.data.totalPages);
@@ -35,11 +32,11 @@ const SubjectBooks = () => {
       setError('Failed to load books for this subject');
       setLoading(false);
     }
-  };
+  }, [subtitle, sub_id, limit]);
 
   useEffect(() => {
-    fetchBooksForSubject(currentPage); // Fetch books when component mounts or page changes
-  }, [subtitle, sub_id, currentPage]); // Depend on subtitle, sub_id, and currentPage
+    fetchBooksForSubject(currentPage);
+  }, [fetchBooksForSubject, currentPage]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -70,7 +67,7 @@ const SubjectBooks = () => {
   return (
     <div className="library-container">
       <div className="library-content">
-        <h1>Books for Subject: {subtitle}</h1> {/* Display the subject title */}
+        <h1>Books for Subject: {subtitle}</h1>
         <ul>
           {books.map((book, index) => (
             <li key={index} className="book-item">
