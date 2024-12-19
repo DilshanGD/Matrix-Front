@@ -15,11 +15,11 @@ const StatisticsSection = ({ statistics }) => (
       <p>Expert Teachers</p>
       <h3>{statistics.totalStaff}</h3>
     </div>
-    <div className="stat-item">
+    {/* <div className="stat-item">
       <i className="icon-student"></i>
       <p>Total Students</p>
       <h3>{statistics.totalStudents}</h3>
-    </div>
+    </div> */}
   </section>
 );
 

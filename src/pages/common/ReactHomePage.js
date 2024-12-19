@@ -15,8 +15,7 @@ const ReactHomePage = () => {
   const [staffGroups, setStaffGroups] = useState({});
   const [statistics, setStatistics] = useState({
     totalClasses: 0,
-    totalStaff: 0,
-    totalStudents: 0,
+    totalStaff: 0
   });
 
   // Fetch homepage data from the API

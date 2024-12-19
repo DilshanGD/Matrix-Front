@@ -67,7 +67,15 @@ const StaffProfile = () => {
 
   const handlePhoneChange = (e) => {
     const { name, value } = e.target;
-    setPhones({ ...phones, [name]: value });
+
+    // Regular expression for validating phone number length (10 to 12 digits)
+    const isValidPhone = /^\d{10,12}$/.test(value);
+
+    if (isValidPhone) {
+      setPhones({ ...phones, [name]: value });
+    } else {
+      alert('Please enter a valid phone number between 10 and 12 digits.');
+    }
   };
 
   const handleFileChange = (e) => {

@@ -1,15 +1,15 @@
 // frontend/src/components/HomeImages.js
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+// import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './css/HomeImages.css';
 
 const HomeImages = ({ homeImages }) => {
-  const navigate = useNavigate(); // Initialize navigate
+  // const navigate = useNavigate(); // Initialize navigate
 
-  const handleRegisterClick = () => {
-    navigate('/student-registration'); // Navigate to StudentRegistration page
-  };
+  // const handleRegisterClick = () => {
+  //   navigate('/student-registration'); // Navigate to StudentRegistration page
+  // };
 
   return (
     <section className="hero">
@@ -26,9 +26,9 @@ const HomeImages = ({ homeImages }) => {
         <p>
           Provide you with the latest online learning system and materials that help your knowledge grow.
         </p>
-        <button className="register-button" onClick={handleRegisterClick}>
+        {/* <button className="register-button" onClick={handleRegisterClick}>
           Register Here
-        </button>
+        </button> */}
       </div>
     </section>
   );
