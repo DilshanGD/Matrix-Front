@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import config from '../../config';
 import './css/StaffProfile.css';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 const StaffProfile = () => {
   const [staffData, setStaffData] = useState(null);
@@ -20,7 +20,7 @@ const StaffProfile = () => {
     profile_pic: '',
     biography: '',
   });
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -67,22 +67,26 @@ const StaffProfile = () => {
 
   const handlePhoneChange = (e) => {
     const { name, value } = e.target;
-
-    // Regular expression for validating phone number length (10 to 12 digits)
-    const isValidPhone = /^\d{10,12}$/.test(value);
-
-    if (isValidPhone) {
-      setPhones({ ...phones, [name]: value });
-    } else {
-      alert('Please enter a valid phone number between 10 and 12 digits.');
-    }
+    setPhones({ ...phones, [name]: value });
   };
 
   const handleFileChange = (e) => {
     setProfileFields({ ...profileFields, profile_pic: e.target.files[0] });
   };
 
+  const validatePhoneNumber = (phone) => /^\d{10,12}$/.test(phone);
+
   const handleSaveChanges = async () => {
+    if (!validatePhoneNumber(phones.phoneHome) || !validatePhoneNumber(phones.phoneMobile)) {
+      alert('Please enter valid phone numbers between 10 and 12 digits.');
+      return;
+    }
+
+    if (phones.phoneHome === phones.phoneMobile) {
+      alert('Home phone number and mobile phone number cannot be the same.');
+      return;
+    }    
+
     try {
       const profileData = {
         ...profileFields,
@@ -98,7 +102,7 @@ const StaffProfile = () => {
       setStaffData(response.data);
       setIsEditing(false);
       alert('Profile updated successfully');
-      navigate(0);
+      //navigate(0);
     } catch (err) {
       console.error('Error updating profile', err.response ? err.response.data : err.message);
       setError(err.response ? err.response.data : 'Failed to save profile changes');
