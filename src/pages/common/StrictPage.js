@@ -23,7 +23,7 @@ const StrictPage = () => {
           <Route path="library" element={<Library />} />
           <Route path="timetable" element={<Timetable />} />
           <Route path="/library/subject/:subtitle" element={<SubjectBooks />} />
-          <Route path="individual-teacher" element={<IndividualTeacher />} />
+          <Route path="strict/individual-teacher" element={<IndividualTeacher />} />
         </Routes>
       </div>
     </div>
