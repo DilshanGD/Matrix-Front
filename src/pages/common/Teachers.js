@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './css/Teachers.css'; // Custom styles for Teachers.js
 import config from '../../config';
 
@@ -69,11 +69,11 @@ const Teachers = () => {
                   return (
                     <div key={subjectTitle} className="subject-group">
                       <h3>{subjectTitle}</h3>
-                      <div className="teacher-list">
+                      <ul>
                         {subjectStaff.map((staffMember, index) => (
-                          <div
+                          <li
                             key={index}
-                            className="teacher-card"
+                            className="staff-member clickable"
                             onClick={() => handleTeacherClick(staffMember.username)}
                           >
                             <img
@@ -81,13 +81,13 @@ const Teachers = () => {
                               alt={`${staffMember.full_name}'s profile`}
                               className="profile-pic"
                             />
-                            <div className="teacher-info">
+                            <div className="staff-info">
                               <p><strong>{staffMember.full_name}</strong></p>
                               <p>Email: {staffMember.email}</p>
                             </div>
-                          </div>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </div>
                   );
                 })}

@@ -13,7 +13,6 @@ const IndividualTeacher = () => {
 
   const username = state?.username; // Expecting username passed in state from previous page
 
-  // Fetch teacher data
   const fetchTeacherData = useCallback(async () => {
     if (!username) {
       setError("No username provided. Please select a teacher.");
@@ -36,12 +35,10 @@ const IndividualTeacher = () => {
     fetchTeacherData();
   }, [fetchTeacherData]);
 
-  // Handle loading state
   if (loading) {
     return <p>Loading teacher data...</p>;
   }
 
-  // Handle error state
   if (error) {
     return (
       <div className="error-message">
@@ -51,12 +48,10 @@ const IndividualTeacher = () => {
     );
   }
 
-  // Handle no data state
   if (!teacherData) {
     return <p>No teacher data available. Please select a teacher from the list.</p>;
   }
 
-  // Destructure teacher data
   const {
     full_name,
     email,
