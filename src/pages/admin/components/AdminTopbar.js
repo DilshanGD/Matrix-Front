@@ -12,7 +12,9 @@ const AdminTopbar = () => {
     const fetchAdminData = async () => {
       try {
         const response = await axios.post(
-          `${config.apiUrl}/admin/admin-topbar`,{ withCredentials: true } // Include cookies in the request
+          `${config.apiUrl}/admin/admin-topbar`,
+          {},
+          { withCredentials: true } // Include cookies in the request
         );
         setAdminData(response.data);
       } catch (err) {
