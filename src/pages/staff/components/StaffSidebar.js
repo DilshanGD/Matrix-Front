@@ -38,9 +38,9 @@ const StaffSidebar = () => {
           <li>
             <Link to="/staff/StaffProfile" className="sidebar-link">My Profile</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/staff/payments" className="sidebar-link">Payments</Link>
-          </li>
+          </li> */}
           <li>
             <button
               onClick={handleLogout}

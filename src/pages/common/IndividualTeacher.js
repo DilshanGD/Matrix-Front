@@ -60,7 +60,7 @@ const IndividualTeacher = () => {
     subject,
     phone,
     class: classes,
-    staffQualification,
+    //staffQualification,
   } = teacherData;
 
   return (
@@ -74,14 +74,14 @@ const IndividualTeacher = () => {
       <div className="details-section">
         <h2>Biography</h2>
         <p>{biography}</p>
-        <h2>Qualifications</h2>
+        {/* <h2>Qualifications</h2>
         <ul>
           {staffQualification.map((qual, index) => (
             <li key={index}>
               {qual.title} - {qual.institute}
             </li>
           ))}
-        </ul>
+        </ul> */}
         <h2>Contact Numbers</h2>
         <ul>
           {phone.map((contact, index) => (
