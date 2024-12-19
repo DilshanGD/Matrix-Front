@@ -60,9 +60,9 @@ const HomeNavbar = ({ logo }) => {
 
         {showDropdown && (
           <div className="dropdown-menu">
-            <button className="dropdown-link" onClick={() => handlePopupToggle('student')}>
+            {/* <button className="dropdown-link" onClick={() => handlePopupToggle('student')}>
               Student Sign-In
-            </button>
+            </button> */}
             <button className="dropdown-link" onClick={() => handlePopupToggle('staff')}>
               Staff Sign-In
             </button>

@@ -35,8 +35,8 @@ const Streams = () => {
           fetchStreamData(); // Refresh the stream list
         }
       } catch (err) {
-        console.error('Error removing stream:', err.message);
-        alert('Failed to remove stream.');
+        console.error('Subjects related to this stream still exists.', err.message);
+        alert('Failed to remove stream. Subjects related to this stream still exists.');
       }
     }
   };

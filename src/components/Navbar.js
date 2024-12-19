@@ -76,9 +76,9 @@ const Navbar = () => {
           </button>
           {showDropdown && (
             <div className="dropdown-menu">
-              <button onClick={() => handlePopupToggle('student')} className="dropdown-link">
+              {/* <button onClick={() => handlePopupToggle('student')} className="dropdown-link">
                 Student Sign-In
-              </button>
+              </button> */}
               <button onClick={() => handlePopupToggle('staff')} className="dropdown-link">
                 Staff Sign-In
               </button>
