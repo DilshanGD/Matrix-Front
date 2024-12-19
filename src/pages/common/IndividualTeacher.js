@@ -1,10 +1,52 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './css/IndividualTeacher.css';
+import config from '../../config';
 
 const IndividualTeacher = () => {
   const { state } = useLocation();
-  const teacherData = state?.teacherData;
+  const navigate = useNavigate();
+  const [teacherData, setTeacherData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const username = state?.username; // Expecting username passed in state from previous page
+
+  const fetchTeacherData = async () => {
+    if (!username) {
+      setError("No username provided. Please select a teacher.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await axios.post(`${config.apiUrl}/staff-individual`, { username });
+      setTeacherData(response.data);
+      setLoading(false);
+    } catch (err) {
+      console.error("Error fetching teacher data:", err);
+      setError("Failed to load teacher data.");
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchTeacherData();
+  }, [username]);
+
+  if (loading) {
+    return <p>Loading teacher data...</p>;
+  }
+
+  if (error) {
+    return (
+      <div className="error-message">
+        <p>{error}</p>
+        <button onClick={() => navigate(-1)}>Go Back</button>
+      </div>
+    );
+  }
 
   if (!teacherData) {
     return <p>No teacher data available. Please select a teacher from the list.</p>;
