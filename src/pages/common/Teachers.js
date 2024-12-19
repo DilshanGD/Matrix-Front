@@ -1,38 +1,48 @@
-// frontend/src/pages/common/Teachers.js
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './css/Teachers.css'; // Custom styles for Teachers.js
+import './css/Teachers.css';
 import config from '../../config';
+import { useNavigate } from 'react-router-dom';
 
 const Teachers = () => {
   const [staffGroups, setStaffGroups] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const fetchStaffData = async () => {
     setLoading(true);
-    setError(null); // Reset error state on retry
+    setError(null);
 
     try {
       const response = await axios.get(`${config.apiUrl}/staff`);
       setStaffGroups(response.data.staffGroups);
-      setLoading(false);
     } catch (err) {
       console.error('Error fetching staff data:', err);
-      setError('Failed to load staff data');
+      setError('Failed to load staff data.');
+    } finally {
       setLoading(false);
     }
   };
 
+  const handleTeacherClick = async (username) => {
+    try {
+      const response = await axios.post(`${config.apiUrl}/staff-individual`, { username });
+      navigate('/individual-teacher', { state: { teacherData: response.data } });
+    } catch (err) {
+      console.error('Error fetching individual teacher data:', err);
+      alert('Failed to fetch teacher details. Please try again.');
+    }
+  };
+
   useEffect(() => {
-    fetchStaffData(); // Fetch staff data when the component is mounted
+    fetchStaffData();
   }, []);
 
   if (loading) {
     return (
       <div className="loading-spinner">
-        <div className="spinner-icon"></div> {/* Visual spinner */}
+        <div className="spinner-icon"></div>
         <p>Loading staff data...</p>
       </div>
     );
@@ -47,7 +57,6 @@ const Teachers = () => {
     );
   }
 
-  // Render staff grouped by stream and subject
   return (
     <div className="teachers-container">
       <div className="teachers-content">
@@ -65,21 +74,22 @@ const Teachers = () => {
                   return (
                     <div key={subjectTitle} className="subject-group">
                       <h3>{subjectTitle}</h3>
-                      <ul>
-                        {subjectStaff.map((staffMember, index) => (
-                          <li key={index} className="staff-member">
+                      <div className="teacher-blocks">
+                        {subjectStaff.map((staffMember) => (
+                          <div
+                            key={staffMember.username}
+                            className="teacher-block"
+                            onClick={() => handleTeacherClick(staffMember.username)}
+                          >
                             <img
                               src={staffMember.profile_pic}
                               alt={`${staffMember.full_name}'s profile`}
                               className="profile-pic"
                             />
-                            <div className="staff-info">
-                              <p><strong>{staffMember.full_name}</strong></p>
-                              <p>Email: {staffMember.email}</p>
-                            </div>
-                          </li>
+                            <p>{staffMember.full_name}</p>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
                   );
                 })}

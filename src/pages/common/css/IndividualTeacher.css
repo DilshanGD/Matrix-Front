@@ -1,0 +1,104 @@
+/* IndividualTeacher.css */
+
+.individual-teacher-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .profile-section {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .profile-pic-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid #007bff;
+  }
+  
+  .profile-section h1 {
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+    color: #333;
+  }
+  
+  .profile-section p {
+    font-size: 1rem;
+    color: #555;
+    margin: 0.2rem 0;
+  }
+  
+  .details-section {
+    margin-top: 1rem;
+  }
+  
+  .details-section h2 {
+    font-size: 1.4rem;
+    color: #007bff;
+    margin-bottom: 0.8rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0.2rem;
+  }
+  
+  .details-section p,
+  .details-section li {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+  }
+  
+  .details-section ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+  }
+  
+  .class-details {
+    padding: 0.8rem;
+    margin: 1rem 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+  }
+  
+  .class-details p {
+    margin: 0.5rem 0;
+  }
+  
+  .class-details p strong {
+    color: #007bff;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .individual-teacher-container {
+      padding: 1rem;
+    }
+  
+    .profile-pic-large {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .profile-section h1 {
+      font-size: 1.6rem;
+    }
+  
+    .details-section h2 {
+      font-size: 1.2rem;
+    }
+  
+    .details-section p,
+    .details-section li {
+      font-size: 0.9rem;
+    }
+  }
+  

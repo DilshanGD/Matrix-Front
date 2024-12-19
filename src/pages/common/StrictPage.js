@@ -9,6 +9,7 @@ import BlogPage from './BlogPage';
 import Library from './Library';
 import SubjectBooks from './SubjectBooks';
 import Timetable from './Timetable';
+import IndividualTeacher from './IndividualTeacher';
 
 const StrictPage = () => {
   return (
@@ -22,6 +23,7 @@ const StrictPage = () => {
           <Route path="library" element={<Library />} />
           <Route path="timetable" element={<Timetable />} />
           <Route path="/library/subject/:subtitle" element={<SubjectBooks />} />
+          <Route path="individual-teacher" element={<IndividualTeacher />} />
         </Routes>
       </div>
     </div>
