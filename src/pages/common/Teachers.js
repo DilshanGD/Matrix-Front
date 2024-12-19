@@ -87,6 +87,7 @@ const Teachers = () => {
                               className="profile-pic"
                             />
                             <p>{staffMember.full_name}</p>
+                            <p>{staffMember.email}</p>
                           </div>
                         ))}
                       </div>

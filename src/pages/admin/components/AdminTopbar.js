@@ -12,13 +12,11 @@ const AdminTopbar = () => {
     const fetchAdminData = async () => {
       try {
         const response = await axios.post(
-          `${config.apiUrl}/admin/admin-topbar`,
-          {},
-          { withCredentials: true } // Include cookies in the request
+          `${config.apiUrl}/admin/admin-topbar`,{ withCredentials: true } // Include cookies in the request
         );
         setAdminData(response.data);
       } catch (err) {
-        console.error('Error fetching Admin data:', err);
+        console.error('Error fetching Admin data:', err.message);
         setError(err.response?.data?.message || 'Failed to load Admin data');
       }
     };
