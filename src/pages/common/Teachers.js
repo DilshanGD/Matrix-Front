@@ -30,7 +30,7 @@ const Teachers = () => {
   }, []);
 
   const handleTeacherClick = (username) => {
-    navigate('/individual-teacher', { state: { username } });
+    navigate('/strict/individual-teacher', { state: { username } });
   };
 
   if (loading) {
