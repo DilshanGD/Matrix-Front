@@ -52,13 +52,13 @@ const AdminTopbar = () => {
       </div>
 
       {/* Right: Profile Picture */}
-      <div className="profile-pic">
+      {/* <div className="profile-pic">
         <img
           src={AdminData.profile_pic ? `/${AdminData.profile_pic}` : '/default-profile.png'}
           alt={`${AdminData.full_name || 'Admin'}'s profile`}
           className="profile-pic-img"
         />
-      </div>
+      </div> */}
     </div>
   );
 };
