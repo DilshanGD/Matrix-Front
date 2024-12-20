@@ -28,9 +28,9 @@ const HomeNavbar = ({ logo }) => {
 
   return (
     <nav className="navbar">
-      {logo ? (
+      {1 ? (
         <img
-          src={logo}
+          src={"https://res.cloudinary.com/dt9t4u46t/image/upload/v1734670780/ops2qun3wuk0r0y2b1rc.jpg"}
           alt="Matrix Logo"
           className="logo"
           onError={(e) => { e.target.src = '/path/to/default-logo.png'; }}

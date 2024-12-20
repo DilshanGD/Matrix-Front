@@ -48,7 +48,7 @@ const Navbar = () => {
       <div className="navbar-content">
         <Link to="/" className="navbar-logo" aria-label="Home">
           {logo ? (
-            <img src={`/${logo}`} alt="Matrix Logo" className="logo" />
+            <img src={"https://res.cloudinary.com/dt9t4u46t/image/upload/v1734670780/ops2qun3wuk0r0y2b1rc.jpg"} alt="Matrix Logo" className="logo" />
           ) : error ? (
             <p>Logo not available</p>
           ) : (
