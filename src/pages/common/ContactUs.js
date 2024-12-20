@@ -71,9 +71,9 @@ const ContactUs = () => {
       </div> */}
       <div className="contact-details">
         <h2>Our Office</h2>
-        <p><strong>Address:</strong> 123 Main Street, City, Country</p>
-        <p><strong>Phone:</strong> +123 456 7890</p>
-        <p><strong>Email:</strong> 0609ganganadilshan@gmail.com</p>
+        <p><strong>Address:</strong> Gampaha, Sri Lanka</p>
+        <p><strong>Phone:</strong> 0765675430</p>
+        <p><strong>Email:</strong> Chathurangamax1235@gmail.com </p>
       </div>
     </div>
   );
