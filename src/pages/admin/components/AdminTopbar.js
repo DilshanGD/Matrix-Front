@@ -39,7 +39,7 @@ const AdminTopbar = () => {
       {/* Left: Navigation Logo */}
       <div className="nav-logo">
         <img
-          src={AdminData.nav_logo ? `/${AdminData.nav_logo}` : '/default-logo.png'}
+          src={"https://res.cloudinary.com/dt9t4u46t/image/upload/v1734670780/ops2qun3wuk0r0y2b1rc.jpg"} 
           alt="Navigation Logo"
           className="nav-logo-img"
         />
