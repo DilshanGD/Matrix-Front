@@ -10,7 +10,7 @@ import './css/Navbar.css';
 import config from '../config';
 
 const Navbar = () => {
-  const [logo, setLogo] = useState(null);
+  //const [logo, setLogo] = useState(null);
   const [error, setError] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [activePopup, setActivePopup] = useState(''); // Tracks the active popup
@@ -21,7 +21,7 @@ const Navbar = () => {
       .then((response) => {
         const logoDetail = response.data.find((detail) => detail.detail_id === 'logo_nav');
         if (logoDetail) {
-          setLogo(logoDetail.file_path);
+          //setLogo(logoDetail.file_path);
         } else {
           setError(true);
         }

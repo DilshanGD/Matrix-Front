@@ -15,7 +15,7 @@ const HomeNavbar = ({ logo }) => {
     setActivePopup((current) => (current === popup ? '' : popup));
     setShowDropdown(false);
   };
-
+logo = 1;
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (!event.target.closest('.dropdown-menu') && !event.target.closest('.sign-in')) {
@@ -28,7 +28,7 @@ const HomeNavbar = ({ logo }) => {
 
   return (
     <nav className="navbar">
-      {1 ? (
+      {logo ? (
         <img
           src={"https://res.cloudinary.com/dt9t4u46t/image/upload/v1734670780/ops2qun3wuk0r0y2b1rc.jpg"}
           alt="Matrix Logo"
