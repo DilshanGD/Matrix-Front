@@ -71,7 +71,7 @@ const BlogPage = () => {
                   {/* Image Block */}
                   <div className="blog-image-container">
                     <img
-                      src={`/${blog.image}` || '/path/to/placeholder.jpg'}
+                      src={blog.image}
                       alt={blog.title}
                       loading="lazy"
                       className="blog-image"
