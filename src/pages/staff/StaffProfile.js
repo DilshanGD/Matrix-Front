@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import config from '../../config';
 import './css/StaffProfile.css';
-//import { useNavigate } from 'react-router-dom';
 
 const StaffProfile = () => {
   const [staffData, setStaffData] = useState(null);
@@ -20,7 +19,6 @@ const StaffProfile = () => {
     profile_pic: '',
     biography: '',
   });
-  //const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -32,7 +30,6 @@ const StaffProfile = () => {
         const { staff, phones } = response.data;
         setStaffData(staff);
 
-        // Update profile fields
         setProfileFields({
           full_name: staff.full_name,
           email: staff.email,
@@ -41,7 +38,6 @@ const StaffProfile = () => {
           biography: staff.biography,
         });
 
-        // Update phone data
         const phoneData = {
           phoneHome: phones.find((phone) => phone.phoneType === 'H')?.phone || '',
           phoneMobile: phones.find((phone) => phone.phoneType === 'M')?.phone || '',
@@ -70,8 +66,12 @@ const StaffProfile = () => {
     setPhones({ ...phones, [name]: value });
   };
 
-  const handleFileChange = (e) => {
-    setProfileFields({ ...profileFields, profile_pic: e.target.files[0] });
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const base64 = await convertBase64(file);
+      setProfileFields({ ...profileFields, profile_pic: base64 });
+    }
   };
 
   const validatePhoneNumber = (phone) => /^\d{10,12}$/.test(phone);
@@ -85,7 +85,7 @@ const StaffProfile = () => {
     if (phones.phoneHome === phones.phoneMobile) {
       alert('Home phone number and mobile phone number cannot be the same.');
       return;
-    }    
+    }
 
     try {
       const profileData = {
@@ -102,7 +102,6 @@ const StaffProfile = () => {
       setStaffData(response.data);
       setIsEditing(false);
       alert('Profile updated successfully');
-      //navigate(0);
     } catch (err) {
       console.error('Error updating profile', err.response ? err.response.data : err.message);
       setError(err.response ? err.response.data : 'Failed to save profile changes');
@@ -127,6 +126,15 @@ const StaffProfile = () => {
       console.error('Error updating password', err.response ? err.response.data : err.message);
       setPasswordError('Failed to update password');
     }
+  };
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
   };
 
   if (error) {

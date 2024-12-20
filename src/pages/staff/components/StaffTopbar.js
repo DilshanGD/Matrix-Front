@@ -54,7 +54,7 @@ const StaffTopbar = () => {
       {/* Right: Profile Picture */}
       <div className="profile-pic">
         <img
-          src={staffData.profile_pic ? `/${staffData.profile_pic}` : '/default-profile.png'}
+          src={ staffData.profile_pic }
           alt={`${staffData.full_name || 'Staff'}'s profile`}
           className="profile-pic-img"
         />
